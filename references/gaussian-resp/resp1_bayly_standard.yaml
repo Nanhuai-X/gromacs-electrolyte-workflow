@@ -1,0 +1,41 @@
+name: resp1_bayly_standard
+status: VALIDATED_NATIVE_IMPLEMENTATION
+scientific_source:
+  bayly_doi: https://doi.org/10.1021/j100142a004
+  multiwfn_manual: https://www.umsyar.com/multiwfn/misc/Multiwfn_3.8_dev.pdf
+  local_registry: references/multiwfn_native_resp_registry.yaml
+qm_geometry:
+  method: USER_SPECIFIED
+  basis: USER_SPECIFIED
+  optimization: REQUIRED_OR_EXISTING_VALIDATED_GEOMETRY
+qm_esp:
+  method: USER_SPECIFIED
+  basis: USER_SPECIFIED
+  solvent_model: NONE_UNLESS_EXPLICITLY_SOURCED
+resp:
+  engine: MULTIWFN_NATIVE
+  menu_path: [7, 18]
+  mode: STANDARD_TWO_STAGE
+  fitting_method: MK
+  esp_type: NUCLEAR_PLUS_ELECTRONIC
+  vdW_radii: AUTOMATIC_MULTIWFN_LOCAL_VERSION
+  stage1:
+    restraint_a: 0.0005
+    restraint_b: 0.1
+    convergence_tolerance: 0.000001
+    charge_constraint: MOLECULAR_FORMAL_CHARGE
+    equivalence: NONE_BY_DEFAULT
+  stage2:
+    restraint_a: 0.001
+    restraint_b: 0.1
+    fitted_objects: NATIVE_MULTIWNF_STANDARD_RULE
+    freeze_non_target_atoms: true
+    equivalence: NATIVE_MULTIWNF_CH3_CH2_EQUIVALENCE
+  hydrogen_treatment: STAGE2_RULES_FROM_NATIVE_REGISTRY
+  formal_charge: READ_FROM_FCHK_AND_VALIDATE
+  output: resp_sp.chg
+guards:
+  no_resp2_mixing: true
+  no_automatic_charge_scaling: true
+  no_gromacs_parameterization: true
+  production_allowed_without_source_review: false

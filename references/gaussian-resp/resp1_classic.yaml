@@ -1,0 +1,23 @@
+name: RESP1_CLASSIC
+status: CANDIDATE
+description: Classical restrained ESP fitting; geometry and ESP levels are independently configurable.
+source:
+  primary: "Bayly et al. 1993, J. Phys. Chem. 97, 10269-10280, DOI: 10.1021/j100142a004"
+  protocol_note: Do not treat HF/6-31G* as a universal default; provide the target paper or user decision.
+geometry_method: null
+geometry_basis: null
+esp_method: null
+esp_basis: null
+solvent: null
+restraint:
+  scheme: hyperbolic_iteratively_reweighted
+  stage1_a: 0.0005
+  stage1_b: 0.1
+  stage2: null
+constraints:
+  total_charge: required
+  equivalent_atoms: protocol_defined_only
+backend:
+  esp_source: Multiwfn_cube
+  fit: python_constrained_resp_reference_implementation
+  native_multiwfn_resp: NOT_YET_VALIDATED
