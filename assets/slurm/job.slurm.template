@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Submit only through an allocated Slurm job; do not run this on a login node.
+set -Eeuo pipefail
+
+JOB_NAME="{{JOB_NAME}}"
+PARTITION="{{PARTITION}}"
+NTASKS="{{NTASKS}}"
+MEMORY="{{MEMORY}}"
+WALLTIME="{{WALLTIME}}"
+
+#SBATCH --job-name={{JOB_NAME}}
+#SBATCH --partition={{PARTITION}}
+#SBATCH --ntasks={{NTASKS}}
+#SBATCH --mem={{MEMORY}}
+#SBATCH --time={{WALLTIME}}
+#SBATCH --output=slurm-%x-%j.out
+#SBATCH --error=slurm-%x-%j.err
+
+printf 'hostname=%s\njob_id=%s\nstart_utc=%s\n' "$(hostname)" "${SLURM_JOB_ID:-unknown}" "$(date -u +%FT%TZ)"
+set +e
+{{RUN_COMMAND}}
+status=$?
+set -e
+printf 'end_utc=%s\nreturn_code=%s\n' "$(date -u +%FT%TZ)" "$status"
+exit "$status"

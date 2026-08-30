@@ -1,0 +1,14 @@
+{
+  "version": "2024.1",
+  "workflow": "adsorption_energy",
+  "status": "NOT_VALIDATED",
+  "definition": "E_ads = E_complex - E_host - E_adsorbate_reference",
+  "jobs": [
+    {"id": "complex", "run_type": "GEO_OPT or ENERGY", "structure": "host_plus_adsorbate"},
+    {"id": "host", "run_type": "ENERGY or GEO_OPT", "structure": "host", "geometry_policy": "explicitly chosen; do not silently mix optimized and same-geometry references"},
+    {"id": "adsorbate_reference", "run_type": "ENERGY", "structure": "adsorbate/reference state", "charge_policy": "must be scientifically specified"}
+  ],
+  "invariants": ["functional", "dispersion", "basis", "potential", "cutoff", "rel_cutoff", "cell", "charge/spin treatment", "SCF threshold"],
+  "gates": ["all three CP2K calculations converge", "same scientific settings", "reference state is declared", "no file-exists-only PASS"],
+  "postprocessing": "scripts/compute_adsorption_energy.py"
+}

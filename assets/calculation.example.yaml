@@ -1,0 +1,45 @@
+schema_version: "1.0"
+job_id: "replace-with-a-stable-id"
+run_target: "LOCAL"
+task: "single point"
+workflow: "single_point"
+
+structure:
+  source: "input_structure/source.cif"
+  sha256: "record-after-reading-the-raw-file"
+  raw_structure_immutable: true
+
+scientific_model:
+  charge: null
+  charge_source: "SCIENTIFIC_DECISION_REQUIRED"
+  multiplicity: null
+  multiplicity_source: "SCIENTIFIC_DECISION_REQUIRED"
+  spin_state: "SCIENTIFIC_DECISION_REQUIRED"
+  functional: null
+  functional_source: "SCIENTIFIC_DECISION_REQUIRED"
+  dispersion: null
+  basis_set: null
+  pseudopotential: null
+  kpoints: null
+  cutoff_ry: null
+  rel_cutoff_ry: null
+  eps_scf: null
+
+cp2k:
+  executable: null
+  version: null
+  manual_manifest: null
+  input_sha256: null
+  output_sha256: null
+
+scheduler:
+  name: null
+  job_id: null
+
+status: "SCIENTIFIC_DECISION_REQUIRED"
+validation: []
+outputs: []
+provenance:
+  commands: []
+  restart_files: []
+  repairs: []

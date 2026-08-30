@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "registry_name": "cp2k-version-bound-template-registry",
+  "generated_on": "2026-08-30",
+  "policy": {
+    "official_source_required": true,
+    "local_execution_required_for_supported": true,
+    "unresolved_slots_are_submission_blocking": true,
+    "same_input_must_be_run_with_declared_cp2k_version": true,
+    "evidence_levels": {
+      "OFFICIAL_SYNTAX_CONFIRMED": "The exact versioned CP2K manual documents the section or keyword.",
+      "LOCAL_EXECUTION_CONFIRMED": "A matching executable ran the exact input and produced a validated artifact.",
+      "NOT_VALIDATED": "The public package has no matching execution artifact or a required scientific gate is unresolved."
+    },
+    "statuses": ["SUPPORTED", "SUPPORTED_WITH_LIMITATIONS", "NOT_VALIDATED", "UNSUPPORTED"]
+  },
+  "versions": {
+    "2024.1": {
+      "manual_url": "https://manual.cp2k.org/cp2k-2024_1-branch/CP2K_INPUT.html",
+      "manual_branch": "cp2k-2024_1-branch",
+      "syntax_profile": {
+        "dos_layout": "legacy_sibling_print_dos_and_pdos",
+        "pdos_parent": "FORCE_EVAL/DFT/PRINT/PDOS",
+        "virtual_states": "verify ADDED_MOS placement against the exact manual",
+        "geo_opt_gamma_with_ot": "avoid an unnecessary explicit Gamma KPOINTS block when using OT"
+      }
+    },
+    "2026.2": {
+      "manual_url": "https://manual.cp2k.org/cp2k-2026_2-branch/CP2K_INPUT.html",
+      "manual_branch": "cp2k-2026_2-branch",
+      "syntax_profile": {
+        "dos_layout": "nested_dos_curve_and_pdos",
+        "pdos_parent": "FORCE_EVAL/DFT/PRINT/DOS/PDOS",
+        "virtual_states": "verify standard diagonalization and added-state controls",
+        "geo_opt_gamma_with_ot": "validate against the exact binary"
+      }
+    }
+  },
+  "templates": {
+    "2024.1": {
+      "geo_opt": "templates_2024/geo_opt.inp.template",
+      "single_point": "templates_2024/single_point.inp.template",
+      "band_structure": "templates_2024/band_structure.inp.template",
+      "dos": "templates_2024/dos_pdos_legacy.inp.template",
+      "pdos": "templates_2024/dos_pdos_legacy.inp.template",
+      "elf_density": "templates_2024/elf_density.inp.template",
+      "charge_population": "templates_2024/charge_population.inp.template",
+      "periodic_resp": "templates_2024/periodic_resp.inp.template",
+      "repeat_like": "templates_2024/repeat_like.inp.template",
+      "work_function": "templates_2024/work_function_slab.inp.template",
+      "adsorption_energy": "templates_2024/adsorption_energy.workflow.json",
+      "charge_density_difference": "templates_2024/charge_density_difference.workflow.json"
+    },
+    "2026.2": {
+      "geo_opt": "templates_2026/geo_opt.inp.template",
+      "single_point": "templates_2026/single_point.inp.template",
+      "band_structure": "templates_2026/band_structure.inp.template",
+      "dos": "templates_2026/dos_pdos_curve.inp.template",
+      "pdos": "templates_2026/dos_pdos_curve.inp.template",
+      "elf_density": "templates_2026/elf_density.inp.template",
+      "charge_population": "templates_2026/charge_population.inp.template",
+      "periodic_resp": "templates_2026/periodic_resp.inp.template",
+      "repeat_like": "templates_2026/repeat_like.inp.template",
+      "work_function": "templates_2026/work_function_slab.inp.template",
+      "adsorption_energy": "templates_2026/adsorption_energy.workflow.json",
+      "charge_density_difference": "templates_2026/charge_density_difference.workflow.json"
+    }
+  },
+  "workflow_status": {
+    "geo_opt": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "Public package includes an exact-version skeleton and manual reference, but no matching execution artifact."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "Public package includes an exact-version skeleton and manual reference, but no matching execution artifact."}
+    },
+    "single_point": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "Validate the exact executable, basis/potential files, and output locally."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "Validate the exact executable, basis/potential files, and output locally."}
+    },
+    "band_structure": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "A high-symmetry path and a matching band artifact still require local validation."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "A high-symmetry path and a matching band artifact still require local validation."}
+    },
+    "dos": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "Use the legacy layout and validate the emitted DOS artifact locally."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "Use the nested layout and validate the emitted DOS artifact locally."}
+    },
+    "pdos": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "A PDOS artifact and projection checks are required."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "A PDOS artifact and projection checks are required."}
+    },
+    "elf_density": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "Cube metadata and finite-value checks are required."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "Cube metadata and finite-value checks are required."}
+    },
+    "charge_population": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "Method-specific charge closure and mapping checks are required."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "Method-specific charge closure and mapping checks are required."}
+    },
+    "periodic_resp": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "Fit quality, sampling, and charge closure are unresolved until local evidence exists."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "Fit quality, sampling, and charge closure are unresolved until local evidence exists."}
+    },
+    "repeat_like": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "Do not claim exact REPEAT equivalence without a method-specific validation."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "Do not claim exact REPEAT equivalence without a method-specific validation."}
+    },
+    "charge_density_difference": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "Common-grid cube audits and fragment-frame checks are required."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "Common-grid cube audits and fragment-frame checks are required."}
+    },
+    "adsorption_energy": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "Three converged, same-theory energies and an explicit reference state are required."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "Three converged, same-theory energies and an explicit reference state are required."}
+    },
+    "work_function": {
+      "2024.1": {"status": "NOT_VALIDATED", "evidence": "A slab, vacuum plateau, potential convention, and local artifact are required."},
+      "2026.2": {"status": "NOT_VALIDATED", "evidence": "A slab, vacuum plateau, potential convention, and local artifact are required."}
+    }
+  },
+  "official_sources": [
+    "https://manual.cp2k.org/cp2k-2024_1-branch/CP2K_INPUT.html",
+    "https://manual.cp2k.org/cp2k-2026_2-branch/CP2K_INPUT.html",
+    "https://manual.cp2k.org/cp2k-2024_1-branch/CP2K_INPUT/FORCE_EVAL/DFT/PRINT/DOS.html",
+    "https://manual.cp2k.org/cp2k-2024_1-branch/CP2K_INPUT/FORCE_EVAL/DFT/PRINT/PDOS.html",
+    "https://manual.cp2k.org/cp2k-2026_2-branch/CP2K_INPUT/FORCE_EVAL/DFT/PRINT/DOS/PDOS.html",
+    "https://manual.cp2k.org/cp2k-2024_1-branch/CP2K_INPUT/FORCE_EVAL/DFT/PRINT/ELF_CUBE.html",
+    "https://manual.cp2k.org/cp2k-2024_1-branch/CP2K_INPUT/FORCE_EVAL/DFT/PRINT/E_DENSITY_CUBE.html",
+    "https://manual.cp2k.org/cp2k-2024_1-branch/CP2K_INPUT/FORCE_EVAL/DFT/PRINT/BAND_STRUCTURE.html",
+    "https://manual.cp2k.org/cp2k-2024_1-branch/CP2K_INPUT/FORCE_EVAL/PROPERTIES/RESP.html",
+    "https://manual.cp2k.org/trunk/methods/properties/resp_charges.html",
+    "https://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/DFT/PLANAR_AVERAGED_V_HARTREE.html"
+  ],
+  "failure_regressions": "failure_regressions.json"
+}
