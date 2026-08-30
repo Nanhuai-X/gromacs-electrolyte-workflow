@@ -1,0 +1,17 @@
+name: MULTICONFORMER_RESP_EQUAL_WEIGHT
+status: PROTOCOL_SUPPORTED_EQUAL_WEIGHT
+engine: native_multiwfn_3.8_dev
+update_date: 2025-Oct-2
+objective: JOINT_COMMON_CHARGE_ESP_FIT
+weights:
+  scheme: equal
+  values: [1.0, 1.0, 1.0]
+  boltzmann_status: NOT_YET_VALIDATED
+restraints: standard_two_stage_resp
+formal_charge_constraint: explicit
+equivalence_constraints: same_across_all_conformers
+atom_mapping: exact_index_element_order
+independent_charge_average: false
+fixture: ethanol_conf1_conf2_conf3
+production_use: protocol_ready_after_molecule_specific_audit
+boltzmann_extension: OPTIONAL_NONSTANDARD_EXTENSION

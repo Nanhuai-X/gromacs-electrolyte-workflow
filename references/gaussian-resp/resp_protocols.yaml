@@ -1,0 +1,21 @@
+protocols:
+  RESP1_CLASSIC:
+    status: CANDIDATE
+    source: Bayly et al. 1993; target geometry/ESP settings required
+    geometry_and_esp_levels_must_be_separate: true
+    charge_constraint: formal_molecular_charge
+    restraint: hyperbolic_iteratively_reweighted
+  DFT_RESP:
+    status: CANDIDATE
+    source: USER_OR_TARGET_PAPER_REQUIRED
+    geometry_and_esp_levels_must_be_separate: true
+    charge_constraint: formal_molecular_charge
+  RESP2:
+    status: NOT_YET_VALIDATED
+    source: USER_OR_TARGET_RESP2_PAPER_REQUIRED
+    same_geometry_and_mapping_required: true
+    mixing_coefficient: explicit_delta
+    formula: q_resp2 = (1-delta) * q_gas + delta * q_solv
+  MULTI_CONFORMER_RESP:
+    status: NOT_YET_VALIDATED
+    common_charge_set_required: true

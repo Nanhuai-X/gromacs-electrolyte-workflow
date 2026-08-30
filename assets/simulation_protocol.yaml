@@ -1,0 +1,30 @@
+protocol_source: default
+temperature_K: 298.15
+pressure_bar: 1.0
+dt_ps: 0.002
+constraints: h-bonds
+lincs_order: 4
+lincs_iter: 1
+pbc: xyz
+cutoff_scheme: Verlet
+coulombtype: PME
+anneal:
+  duration_ps: 600
+  nsteps: 300000
+  times_ps: [0, 100, 200, 350, 500, 600]
+  temperatures_K: [298.15, 298.15, 350, 350, 298.15, 298.15]
+npt:
+  minimum_ns: 5
+  extension_ns: 2
+  maximum_ns: 10
+  pcoupl: C-rescale
+  tau_p_ps: 5
+  compressibility_bar_inv: 4.5e-5
+nvt_transition:
+  duration_ns: 1
+production:
+  duration_ns: 20
+  nstxout_compressed: 1000
+  nstenergy: 1000
+  nstlog: 5000
+checkpoint_minutes: 15

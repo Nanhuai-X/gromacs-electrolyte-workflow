@@ -1,0 +1,29 @@
+name: RESP2_DELTA_0P6
+status: ORIGINAL_RESP2_RECOMMENDED_PROFILE_NOT_UNIVERSAL
+source:
+  primary: https://doi.org/10.1038/s42004-020-0291-4
+  implementation_note: Gaussian plus native Multiwfn; not original Psi4/Respyte code
+qm:
+  method: PW6B95
+  source_basis: aug-cc-pV(D+d)Z
+  basis: aug-cc-pVDZ
+  gaussian_mapping: For H/C/N/O fixtures, no second-row tight-d function is present; Gaussian route uses aug-cc-pVDZ and records this as an explicit implementation mapping.
+  geometry_source: EXISTING_VALIDATED_FROZEN_GEOMETRY
+gas:
+  solvent: NONE
+aqueous:
+  model: CPCM
+  solvent: Water
+  dielectric_reported_by_source: 78.39
+resp:
+  engine: MULTIWFN_NATIVE
+  stage1_restraint_a: 0.005
+  stage2_restraint_a: 0.01
+  restraint_b: 0.1
+  equivalence: NATIVE_MULTIWNF_STANDARD_RULE
+delta: 0.6
+guards:
+  same_geometry: true
+  no_renormalization: true
+  no_ionic_scaling: true
+  production_electrolyte_allowed: false

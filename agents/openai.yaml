@@ -1,0 +1,4 @@
+interface:
+  display_name: "GROMACS Electrolyte Workflow"
+  short_description: "Gated electrolyte GROMACS workflow"
+  default_prompt: "Use $gromacs-electrolyte-workflow for a gated, provenance-first electrolyte GROMACS workflow."
